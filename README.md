@@ -12,7 +12,6 @@ Este projeto é um sistema de gerenciamento de produtos que permite:
 - ✏️ Criação e edição de produtos com formulários validados  
 - 🗑️ Exclusão de produtos com confirmação  
 - 🔄 Controle de status dos produtos (ativo/inativo)  
-
 ---
 
 ## 🚀 Tecnologias Utilizadas
@@ -27,7 +26,7 @@ Este projeto é um sistema de gerenciamento de produtos que permite:
 ---
 
 ## 📦 Pré-requisitos
-
+- Backend: (https://github.com/fbatalha7/Ecommerce.API)
 - [Node.js](https://nodejs.org/) (versão **18 ou superior**)  
 - [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)  
 - [Angular CLI](https://angular.io/cli)  
