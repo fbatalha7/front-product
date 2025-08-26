@@ -1,0 +1,15 @@
+.upload-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* espaçamento entre os campos */
+  max-height: 70vh; /* deixa scroll interno se houver muitos campos */
+  overflow-y: auto;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.upload-modal-actions {
+  margin-top: 16px;
+}

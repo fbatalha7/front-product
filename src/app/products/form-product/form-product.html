@@ -1,0 +1,66 @@
+<div class="form-container">
+  <h2>Produto</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+    <!-- Código -->
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="code" />
+      </mat-form-field>
+    </div>
+
+    <!-- Descrição -->
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Descrição</mat-label>
+        <input matInput formControlName="description" />
+      </mat-form-field>
+    </div>
+
+    <!-- Departamento -->
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Departamento</mat-label>
+        <input type="text" matInput formControlName="department" [matAutocomplete]="auto" required />
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayDeptName"
+          (optionSelected)="onDepartmentSelected($event.option.value)">
+          <mat-option *ngFor="let dept of filteredDepartments | async" [value]="dept">
+            {{ dept.description }}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-error *ngIf="productForm.get('department')?.hasError('required')">
+          Departamento é obrigatório
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Preço -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Preço (R$)</mat-label>
+
+    <input 
+    matInput formControlName="price" 
+    mask="separator.2" 
+    thousandSeparator="." 
+    decimalMarker="," 
+    prefix="R$ "
+    [dropSpecialCharacters]="true"
+     />
+
+    </mat-form-field>
+
+    <!-- Status -->
+    <div class="form-row">
+      <app-status-toggle formControlName="status"></app-status-toggle>
+    </div>
+
+    <!-- Botões -->
+    <div class="form-actions">
+      <button mat-flat-button class="btn-cancel" type="button" (click)="onCancel()">Cancelar</button>
+      <button mat-flat-button color="primary" class="btn-save" type="submit">Salvar</button>
+    </div>
+
+  </form>
+</div>

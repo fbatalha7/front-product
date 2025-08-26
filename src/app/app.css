@@ -1,0 +1,124 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #234080;
+}
+
+.layout-container {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #234080;
+  transition: margin-left 0.3s;
+}
+
+.layout-container.menu-open {
+  margin-left: 200px;
+}
+
+.app-header {
+  margin: 0;
+  padding: 16px 32px;
+  background: #1e3c72;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.main-content {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.app-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logout-btn {
+  background: none;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -200px;
+  width: 200px;
+  height: 100%;
+  background: #1e3c72;
+  color: #fff;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  transition: left 0.3s;
+  z-index: 1000;
+  padding-top: 60px;
+}
+
+.side-menu.open {
+  left: 0;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu li {
+  margin: 24px 0;
+  padding-left: 24px;
+}
+
+.side-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Responsivo para telas menores */
+@media (max-width: 600px) {
+  .layout-container.menu-open {
+    margin-left: 150px;
+  }
+  .side-menu {
+    width: 150px;
+    left: -150px;
+  }
+  .side-menu.open {
+    left: 0;
+  }
+}

@@ -1,0 +1,67 @@
+<div class="products-content">
+  <h2>Produtos</h2>
+
+  <div class="products-filters">
+    <button class="add-btn" (click)="NavigatePage(null)">+ Adicionar produto</button>
+  </div>
+  <!-- Tabela -->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let element">{{element.id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Código</th>
+      <td mat-cell *matCellDef="let element">{{element.code}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</th>
+      <td mat-cell *matCellDef="let element">{{element.description}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="department">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Departamento</th>
+      <td mat-cell *matCellDef="let element">{{element.department.description}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header>Preço</th>
+  <td mat-cell *matCellDef="let element">
+    {{ element.price | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+  </td>
+</ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let element">{{element.status ? 'Ativo' : 'Inativo'}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let element">
+        <button (click)="NavigatePage(element.id)">✏️ Editar</button>
+        <button (click)="excluir(element)">🗑️ Excluir</button>
+      </td>
+    </ng-container>
+
+
+    <!-- Cabeçalhos e Linhas -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Linha de "Sem dados" -->
+    <tr *ngIf="dataSource.data.length === 0">
+      <td [attr.colspan]="displayedColumns.length" class="no-data">
+        <span class="no-data-icon">📭</span> Nenhum produto encontrado
+      </td>
+    </tr>
+
+  </table>
+
+  <!-- Paginação -->
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+  </mat-paginator>
+</div>

@@ -1,0 +1,68 @@
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+  font-family: Arial, sans-serif;
+  font-weight: 500;
+}
+
+.label {
+  cursor: pointer;
+  color: #5a5a5a;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.active-label {
+  color: #007aff;
+}
+
+.archived-label {
+  color: #c00;
+  opacity: 0.5;
+}
+
+.archived-label.active {
+  opacity: 1;
+}
+
+.switch {
+  position: relative;
+  width: 42px;
+  height: 24px;
+  background: #ddd;
+  border-radius: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.switch .slider {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  background: #007aff;
+  border-radius: 50%;
+  transition: left 0.25s ease;
+}
+
+.toggle-container.archived .switch .slider {
+  left: 20px;
+  background: #c00;
+}
+
+/* Para ajustar a posição dos textos quando está ativo/inativo */
+.toggle-container.archived .active-label {
+  color: #aaa;
+}
+
+.toggle-container.archived .archived-label {
+  opacity: 1;
+  color: #c00;
+}
