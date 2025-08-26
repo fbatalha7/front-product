@@ -68,6 +68,8 @@ ng serve
 ```
 
 #🏗️ Estrutura do Projeto
+
+```
 src/app/
 ├── core/                     # Serviços e componentes principais
 ├── guards/
@@ -85,7 +87,10 @@ src/app/
     ├── modal-dialog/         # Componente de modal
     └── status-toggle/        # Toggle de status
 
-🔄 Fluxo da Aplicação
+```
+
+#🔄 Fluxo da Aplicação
+```
 flowchart TD
     A[Usuário Acessa] --> B{Token Existe?}
     B -->|Não| C[Página de Login]
@@ -119,5 +124,5 @@ flowchart TD
     U -->|Não| J
     U -->|Sim| V[Excluir Produto]
     V --> W[Atualizar Lista]
-    
+```
 <img width="452" height="539" alt="image" src="https://github.com/user-attachments/assets/3b824c23-cc11-494e-ae09-9214f4771727" />
