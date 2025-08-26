@@ -8,7 +8,6 @@ Uma aplicação web desenvolvida em **Angular** para gerenciamento de produtos c
 
 Este projeto é um sistema de gerenciamento de produtos que permite:
 
-- 🔐 Autenticação de usuários com sistema de login  
 - 📑 Listagem de produtos com paginação e filtros  
 - ✏️ Criação e edição de produtos com formulários validados  
 - 🗑️ Exclusão de produtos com confirmação  
