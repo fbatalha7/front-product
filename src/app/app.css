@@ -109,7 +109,6 @@ html, body {
   font-size: 16px;
 }
 
-/* Responsivo para telas menores */
 @media (max-width: 600px) {
   .layout-container.menu-open {
     margin-left: 150px;
