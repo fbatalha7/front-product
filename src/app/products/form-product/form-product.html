@@ -40,14 +40,8 @@
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Preço (R$)</mat-label>
 
-    <input 
-    matInput formControlName="price" 
-    mask="separator.2" 
-    thousandSeparator="." 
-    decimalMarker="," 
-    prefix="R$ "
-    [dropSpecialCharacters]="true"
-     />
+      <input matInput formControlName="price" mask="separator.2" thousandSeparator="." decimalMarker="," prefix="R$ "
+        [dropSpecialCharacters]="true" />
 
     </mat-form-field>
 
@@ -58,7 +52,8 @@
 
     <!-- Botões -->
     <div class="form-actions">
-      <button mat-flat-button class="btn-cancel" type="button" (click)="onCancel()">Cancelar</button>
+      <button mat-flat-button class="btn-cancel" type="button" (click)="onCancel()">{{ (isEditing ? 'Voltar':'Cancelar')
+        }}</button>
       <button mat-flat-button color="primary" class="btn-save" type="submit">Salvar</button>
     </div>
 

@@ -1,0 +1,53 @@
+:host {
+  display: block;
+  font-family: Roboto, sans-serif;
+  color: #333;
+}
+
+/* Título */
+mat-dialog-title {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 16px 24px 0;
+  color: #212121;
+}
+
+/* Conteúdo */
+mat-dialog-content {
+  font-size: 16px;
+  padding: 16px 24px;
+  line-height: 1.5;
+}
+
+/* Ações */
+mat-dialog-actions {
+  padding: 8px 16px 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Botão Cancelar (secundário) */
+button[mat-button] {
+  color: #757575;
+}
+
+/* Botão Confirmar (primário) */
+button[mat-flat-button] {
+  background-color: #1976d2;
+  color: white;
+
+  &:hover {
+    background-color: #1565c0;
+  }
+}
+
+/* Versão alternativa para ações perigosas (ex: exclusão) */
+button[mat-flat-button].danger {
+  background-color: #d32f2f;
+  color: white;
+
+  &:hover {
+    background-color: #b71c1c;
+  }
+}

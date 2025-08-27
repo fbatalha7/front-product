@@ -12,6 +12,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DepartmentService } from '../department.service';
 import { StatusToggleComponent } from '../../shared/status-toggle/status-toggle';
 import { provideNgxMask, NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
+import { ConfirmDialogComponent, ConfirmDialogData } from '../../shared/confirm-dialog/confirm-dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-product-form',
@@ -33,6 +36,7 @@ import { provideNgxMask, NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 })
 export class FormProductComponent implements OnInit {
   productForm!: FormGroup;
+  isEditing: boolean = false; 
   departments: Department[] = [];
   id: string | undefined;
 
@@ -44,14 +48,15 @@ export class FormProductComponent implements OnInit {
     private productService: ProductsService,
     private router: Router,
     private departmentService: DepartmentService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) { }
 
   private populateForm(product: Product) {
   this.productForm.patchValue({
     code: product.code,
     description: product.description,
-    price: this.formatPrice(product.price), // aqui aplicamos a formatação
+    price: this.formatPrice(product.price),
     status: product.status,
     department: product.department
   });
@@ -63,9 +68,9 @@ export class FormProductComponent implements OnInit {
 
   ngOnInit() {
 
-
-
     this.id = this.route.snapshot.paramMap.get('id')?.toString();
+
+    this.isEditing = !!this.id;
 
     this.productService.getProduct(this.id!).subscribe({
       next: (data) => {
@@ -104,16 +109,13 @@ export class FormProductComponent implements OnInit {
     let value: string = this.productForm.get('price')?.value;
 
     if (typeof value === 'string') {
-      // Remove tudo que não é número ou vírgula/ponto
       let numericValue = value.replace(/[^0-9,\.]/g, '');
 
-      // Troca vírgula por ponto para converter em float
       numericValue = numericValue.replace(',', '.');
 
       const parsed = parseFloat(numericValue);
 
       if (!isNaN(parsed)) {
-        // Atualiza o form com o número
         this.productForm.get('price')?.setValue(parsed);
       } else {
         this.productForm.get('price')?.setValue(null);
@@ -145,22 +147,18 @@ export class FormProductComponent implements OnInit {
 
       const product: Product = this.productForm.value;
 
-      const valorFormatado: string = this.productForm.get('price')?.value;
-      console.log(valorFormatado); // Exemplo: "R$ 909,990"
-
       if (this.id) {
         this.productService.updateProduct(product, this.id).subscribe({
           next: (response) => {
-            console.log('Produto atualizado com sucesso:', response);
+            this.router.navigate(['/products']);
           },
           error: (error) => {
-            console.error('Erro ao atualizar produto:', error);
           }
         });
       } else {
         this.productService.createProduct(product).subscribe({
           next: (response) => {
-            console.log('Produto criado com sucesso:', response);
+            this.router.navigate(['/products']);
           },
           error: (error) => {
             console.error('Erro ao criar produto:', error);
