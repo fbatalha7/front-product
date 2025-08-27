@@ -47,9 +47,9 @@
   gap: 12px;
   margin-bottom: 24px;
   flex-wrap: wrap;
+  justify-content: end;
 }
 
-.products-filters input,
 .products-filters select {
   padding: 8px;
   border-radius: 6px;
@@ -57,7 +57,6 @@
   font-size: 15px;
 }
 
-.products-filters .search-btn,
 .products-filters .clear-btn,
 .products-filters .add-btn {
   padding: 8px 16px;
@@ -65,11 +64,6 @@
   border: none;
   font-weight: bold;
   cursor: pointer;
-}
-
-.products-filters .search-btn {
-  background: #2d6cdf;
-  color: #fff;
 }
 
 .products-filters .clear-btn {
@@ -164,4 +158,47 @@
   border: none;
   background: none;
   cursor: pointer;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.edit-btn {
+  background-color: #1976d2; /* Azul Material */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #1565c0;
+  }
+}
+
+.delete-btn {
+  background-color: #d32f2f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #b71c1c;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
