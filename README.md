@@ -87,6 +87,8 @@ src/app/
 
 ```
 
+Para testar o fluxo de autenticação use o valor "teste" para UserName e Password.
+
 #🔄 Fluxo da Aplicação
 ```
 flowchart TD
